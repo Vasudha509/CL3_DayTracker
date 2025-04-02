@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Notes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">My Notes</h2>
+    
+    <!-- Form to Add New Note -->
+    <div class="mb-3">
+        <h4>Add New Note</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content:</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Add Note</button>
+        </form>
+    </div>
+    
+    <!-- Display Notes -->
+    <h4>Existing Notes:</h4>
+    {% if notes %}
+        <ul class="list-group">
+            {% for note in notes %}
+                <li class="list-group-item">
+                    <strong>{{ note.title }}</strong>
+                    <p>{{ note.content }}</p>
+                    <small>Created at: {{ note.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">You have no notes yet.</p>
+    {% endif %}
+<br><br><br>
+</div>
+{% endblock %}

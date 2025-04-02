@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}To-Do List - Day Tracker{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Your To-Do List</h1>
+    
+    <!-- Add New Task Section -->
+    <div class="mb-4 text-center">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+            <i class="fas fa-plus"></i> Add New Task
+        </button>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text text-muted">{{ task.description }}</p>
+                    <p class="text-muted">Created: {{ task.created_at }}</p>
+                    <p class="text-success {% if task.completed %}completed{% else %}not-completed{% endif %}">
+                        {% if task.completed %}Completed{% else %}Not Completed{% endif %}
+                    </p>
+                    <a href="{% url 'todo_mark_complete' task.id %}" class="btn btn-success {% if task.completed %}disabled{% endif %}">
+                        Mark as Completed
+                    </a>
+                    <a href="{% url 'todo_delete' task.id %}" class="btn btn-danger">
+                        Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center text-muted">No tasks to show. Add a new task!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal for Adding New Task -->
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'todo_add' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="task-title" class="form-label">Task Title</label>
+                        <input type="text" class="form-control" id="task-title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-description" class="form-label">Description</label>
+                        <textarea class="form-control" id="task-description" name="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

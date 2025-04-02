@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Daily Log{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Daily Log</h2>
+    <div class="mb-4">
+        <a href="{% url 'add_daily_log' %}" class="btn btn-primary">Add New Log</a>
+    </div>
+    <div class="row">
+        {% for log in logs %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">{{ log.date }}</h5>
+                    <p><strong>Mood:</strong> {{ log.get_mood_display }}</p>
+                    <p><strong>Tasks Completed:</strong> {{ log.tasks_completed }}</p>
+                    <p><strong>Notes:</strong> {{ log.notes }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

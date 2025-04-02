@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/events.css' %}">
+{% endblock %}
+{% block title %}Event Scheduler{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Event Scheduler</h2>
+    <div class="text-end mb-3">
+        <a href="{% url 'add_event' %}" class="btn btn-success">+ Add New Event</a>
+    </div>
+    {% if events %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.date }}</td>
+                            <td>{{ event.start_time }}</td>
+                            <td>{{ event.end_time }}</td>
+                            <td>{{ event.description|default:"N/A" }}</td>
+                            <td>
+                                <!-- Delete button redirects to the confirmation page -->
+                                <a href="{% url 'confirm_delete' event.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No events scheduled yet. Add your first event!</p>
+    {% endif %}
+<br><br><br>
+</div>
+{% endblock %}

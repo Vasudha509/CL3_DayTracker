@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/events.css' %}">
+{% endblock %}
+{% block title %}Add Event{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary mb-4">Add Event</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter event title" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="date" class="form-label">Date:</label>
+                <input type="date" name="date" id="date" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="start_time" class="form-label">Start Time:</label>
+                <input type="time" name="start_time" id="start_time" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="end_time" class="form-label">End Time:</label>
+                <input type="time" name="end_time" id="end_time" class="form-control" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter event description (optional)"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Add Event</button>
+	
+            </div>
+        </form>
+<br><br><br><br>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/habit_tracker.css' %}">
+{% endblock %}
+
+{% block title %}Add New Habit{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Add New Habit</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Habit Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="target" class="form-label">Target Frequency (per day)</label>
+            <input type="number" class="form-control" id="target" name="target" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Habit</button>
+    </form>
+<br><br><br>
+</div>
+{% endblock %}

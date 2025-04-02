@@ -1,0 +1,170 @@
+/* style.css */
+
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar a.navbar-brand,
+.navbar a.nav-link {
+    color: white !important;
+}
+
+.navbar a.navbar-brand:hover,
+.navbar a.nav-link:hover {
+    color: #d4d4d4 !important;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Welcome section styling */
+.text-center {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+/* Footer styling */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.welcome-section h1 {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.card-title {
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.text-success {
+    font-weight: bold;
+}
+
+.text-muted {
+    font-size: 0.9rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+
+.card-body {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background-color: #5bc0de;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.form-control {
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+textarea.form-control {
+    resize: none; /* Prevent manual resizing */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Adjusted primary color */
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+

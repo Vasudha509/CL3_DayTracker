@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/habit_tracker.css' %}">
+{% endblock %}
+
+{% block title %}Log Habit Completion{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Log Completion for: {{ habit.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="count" class="form-label">How many times did you complete this habit today?</label>
+            <input type="number" class="form-control" id="count" name="count" min="0" required>
+        </div>
+        <button type="submit" class="btn btn-success">Log Completion</button>
+    </form>
+<br><br><br>
+</div>
+{% endblock %}
